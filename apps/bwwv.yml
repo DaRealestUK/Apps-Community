@@ -12,7 +12,7 @@
     # FACTS #######################################################################
     - name: 'Set Known Facts'
       set_fact:
-        pgrole: 'bitwardenvault'
+        pgrole: 'bwwv'
         intport: '80'
         extport: '2490'
         image: 'bitwardenrs/web-vault'
