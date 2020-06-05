@@ -55,6 +55,7 @@
       docker_container:
         name: '{{pgrole}}'
         image: '{{image}}'
+        command: ["/usr/local/bin/janus", "-F", "/usr/local/etc/janus"]
         pull: yes
         published_ports:
           - '{{extport}}:{{intport}}'
@@ -63,9 +64,9 @@
           - '{{ports.stdout}}{{extport4}}:{{intport4}}'
           - '{{ports.stdout}}{{extport5}}:{{intport5}}'
         volumes:
+          - '{{pg_volumes}}'
           - "./etc/janus/janus.jcfg:/usr/local/etc/janus/janus.jcfg"
           - "./etc/janus/janus.eventhandler.sampleevh.jcfg:/usr/local/etc/janus/janus.eventhandler.sampleevh.jcfg"
-          - '{{pg_volumes}}'
         env: '{{pg_env}}'
         restart_policy: always
         networks:
