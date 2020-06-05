@@ -56,7 +56,6 @@
         name: '{{pgrole}}'
         image: '{{image}}'
         pull: yes
-        command: ["/usr/local/bin/janus", "-F", "/usr/local/etc/janus"]
         published_ports:
           - '{{extport}}:{{intport}}'
           - '{{ports.stdout}}{{extport2}}:{{intport2}}'
