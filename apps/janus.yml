@@ -23,7 +23,7 @@
         extport4: '7088'
         intport5: '7089'
         extport5: '7089'
-        image: 'canyan/janus-gateway'
+        image: 'canyan/janus-gateway:latest'
 
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'
