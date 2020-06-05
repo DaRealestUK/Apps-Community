@@ -63,10 +63,7 @@
           - '{{ports.stdout}}{{extport3}}:{{intport3}}'
           - '{{ports.stdout}}{{extport4}}:{{intport4}}'
           - '{{ports.stdout}}{{extport5}}:{{intport5}}'
-        volumes:
-          - '{{pg_volumes}}'
-          - "./etc/janus/janus.jcfg:/usr/local/etc/janus/janus.jcfg"
-          - "./etc/janus/janus.eventhandler.sampleevh.jcfg:/usr/local/etc/janus/janus.eventhandler.sampleevh.jcfg"
+        volumes: '{{pg_volumes}}'
         env: '{{pg_env}}'
         restart_policy: always
         networks:
