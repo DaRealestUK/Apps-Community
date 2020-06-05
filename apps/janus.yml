@@ -53,7 +53,8 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}:/usr/local/etc/janus'
+          - '/opt/appdata/{{pgrole}}/janus.jcfg:/usr/local/etc/janus/janus.jcfg'
+          - '/opt/appdata/{{pgrole}}/janus.eventhandler.sampleevh.jcfg:/usr/local/etc/janus/janus.eventhandler.sampleevh.jcfg'
 
     - name: 'Setting PG ENV'
       set_fact:
