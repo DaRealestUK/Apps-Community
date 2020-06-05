@@ -41,7 +41,7 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}/data:/data'
+          - '/opt/appdata/{{pgrole}}:/usr/local/etc/janus'
           - '/opt/appdata/{{pgrole}}/database:/database'
 
     - name: 'Setting PG ENV'
