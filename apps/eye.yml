@@ -1,31 +1,3 @@
-
-PlexGuide.com
-Forums
-motionEye Custom Container
- Thread starterbrx7n  Start dateSaturday at 9:33 PM  Replies1  Views43
-REPLY
-Forums
-Applications (Community)
-Other Apps
-[ News Server: UseNetServer - Receive a 40% Discount ]
-PG Discount Special
-Ignore
-Watch
-brx7n
-Citizen Original poster
-Jul 17, 2019
-7
-1
-Country flag
-Saturday at 9:33 PM
-Add bookmark
-#1
-I successfully modified and deployed my own and first custom container using PlexGuide 8.7.5.
-
-motionEye is the web-based frontend for Motion. It is written in Python. It's basically a video surveillance software. I'm still tinkering with the functionality. I have a RaspberryPi Zero W running motionEyeOS as a camera, but it seems like it can handle most other network cameras with ease.
-
-I modified the pgui.yml for the motioneye.yml, so any feedback is welcome:
-Code:
 #!/bin/bash
 #
 # Title:      PGBlitz (Reference Title File)
