@@ -46,7 +46,7 @@
       set_fact:
         pg_volumes:
           - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/{{pgrole}}:/var/atlassian/application-data/confluence'
+          - '/opt/appdata/{{pgrole}}:/var/atlassian/application-data/bitbucket'
 
     - name: 'Setting PG ENV'
       set_fact:
