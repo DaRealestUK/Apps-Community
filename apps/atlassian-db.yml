@@ -64,5 +64,7 @@
         env: '{{pg_env}}'
         restart_policy: unless-stopped
         networks:
-          - atlassian
+          - name: plexguide
+            aliases:
+              - '{{pgrole}}'
         state: started
