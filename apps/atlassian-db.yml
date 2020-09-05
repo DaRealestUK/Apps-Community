@@ -65,6 +65,4 @@
         restart_policy: unless-stopped
         networks:
           - atlassian
-        aliases:
-              - '{{pgrole}}'
         state: started
