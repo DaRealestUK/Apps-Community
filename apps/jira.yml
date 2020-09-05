@@ -66,7 +66,6 @@
           - '{{ports.stdout}}{{extport}}:{{intport}}'
         volumes: '{{pg_volumes}}'
         env: '{{pg_env}}'
-        env_file: /opt/communityapps/apps/templates/jira/.env
         restart_policy: unless-stopped
         networks:
           - plexguide
