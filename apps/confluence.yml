@@ -70,7 +70,5 @@
         networks:
           - plexguide
           - atlassian
-        aliases:
-              - '{{pgrole}}'
         state: started
         labels: '{{pg_labels}}'
