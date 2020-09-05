@@ -1,0 +1,70 @@
+#!/bin/bash
+#
+# Title:      PGBlitz (Reference Title File)
+# Author(s):  Admin9705
+# URL:        https://pgblitz.com - http://github.pgblitz.com
+# GNU:        General Public License v3.0
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    # FACTS #######################################################################
+    - name: 'Set Known Facts'
+      set_fact:
+        pgrole: 'atlassian-db'
+        intport: '5432'
+        extport: '5432'
+        image: 'postgres:10'
+
+    # CORE (MANDATORY) ############################################################
+    - name: 'Including cron job'
+      include_tasks: '/opt/communityapps/apps/_core.yml'
+
+    # EXTRAS FOR INIT FILE ##########################################################
+    - name: 'Create {{pgrole}} mp4 directories'
+      file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes'
+      with_items:
+        - '/opt/appdata/{{pgrole}}'
+        - '/opt/appdata/{{pgrole}}/scripts'
+
+    - name: 'Copy custom init scripts into directory for {{pgrole}}'
+      copy:
+        src: /opt/communityapps/apps/templates/{{pgrole}}/scripts/atlassian.sql
+        dest: /opt/appdata/{{pgrole}}/scripts
+        directory_mode: yes
+        force: yes
+        owner: 1000
+        group: 1000
+        mode: 0775
+
+    # LABELS ######################################################################
+    - name: 'Setting PG Volumes'
+      set_fact:
+        pg_volumes:
+          - '/etc/localtime:/etc/localtime:ro'
+          - '/opt/appdata/{{pgrole}}:/var/atlassian/application-data/confluence'
+          - '/opt/appdata/{{pgrole}}/scripts/atlassian.sql:/docker-entrypoint-initdb.d/atlassian.sql'
+
+    - name: 'Setting PG ENV'
+      set_fact:
+        pg_env:
+          POSTGRES_USER: 'postgres'
+          POSTGRES_PASSWORD: 'mysecretpassword'
+
+    # MAIN DEPLOYMENT #############################################################
+    - name: 'Deploying {{pgrole}}'
+      docker_container:
+        name: '{{pgrole}}'
+        image: '{{image}}'
+        pull: yes
+        published_ports:
+          - '{{ports.stdout}}{{extport}}:{{intport}}'
+        volumes: '{{pg_volumes}}'
+        env: '{{pg_env}}'
+        restart_policy: unless-stopped
+        networks:
+          - atlassian
+        aliases:
+              - '{{pgrole}}'
+        state: started
