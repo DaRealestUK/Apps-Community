@@ -52,7 +52,7 @@
           ATL_TOMCAT_SECURE: 'true'
           ATL_TOMCAT_SCHEME: 'https'
           ATL_PROXY_PORT: '443'
-          ATL_PROXY_NAME: '${JIRA_DOMAIN}'
+          ATL_PROXY_NAME: '{{pgrole}}.{{domain.stdout}}'
           JVM_MINIMUM_MEMORY: '${JIRA_MIN_MEM}'
           JVM_MAXIMUM_MEMORY: '${JIRA_MAX_MEM}'
 
