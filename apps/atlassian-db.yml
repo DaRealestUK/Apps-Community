@@ -27,6 +27,7 @@
       with_items:
         - '/opt/appdata/{{pgrole}}'
         - '/opt/appdata/{{pgrole}}/scripts'
+        - '/opt/appdata/{{pgrole}}/data'
 
     - name: 'Copy custom init scripts into directory for {{pgrole}}'
       copy:
@@ -43,7 +44,7 @@
       set_fact:
         pg_volumes:
           - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/{{pgrole}}:/var/lib/postgresql/data'
+          - '/opt/appdata/{{pgrole}}/data:/var/lib/postgresql/data'
           - '/opt/appdata/{{pgrole}}/scripts/atlassian.sql:/docker-entrypoint-initdb.d/atlassian.sql'
 
     - name: 'Setting PG ENV'
