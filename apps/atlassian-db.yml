@@ -43,7 +43,7 @@
       set_fact:
         pg_volumes:
           - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/{{pgrole}}:/var/atlassian/application-data/confluence'
+          - '/opt/appdata/{{pgrole}}:/var/lib/postgresql/data'
           - '/opt/appdata/{{pgrole}}/scripts/atlassian.sql:/docker-entrypoint-initdb.d/atlassian.sql'
 
     - name: 'Setting PG ENV'
