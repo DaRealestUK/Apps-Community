@@ -15,8 +15,8 @@
         pgrole: 'confluence'
         intport: '8090'
         extport: '8090'
-        intport2: '8081'
-        extport2: '8081'
+        intport2: '8091'
+        extport2: '8091'
         image: 'atlassian/confluence-server:latest'
 
     # CORE (MANDATORY) ############################################################
