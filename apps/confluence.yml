@@ -15,6 +15,8 @@
         pgrole: 'confluence'
         intport: '8090'
         extport: '8090'
+        intport2: '8081'
+        extport2: '8081'
         image: 'atlassian/confluence-server:latest'
 
     # CORE (MANDATORY) ############################################################
@@ -70,6 +72,7 @@
         pull: yes
         published_ports:
           - '{{ports.stdout}}{{extport}}:{{intport}}'
+          - '{{ports.stdout}}{{extport2}}:{{intport2}}'
         volumes: '{{pg_volumes}}'
         env: '{{pg_env}}'
         restart_policy: unless-stopped
